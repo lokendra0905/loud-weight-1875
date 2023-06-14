@@ -1,0 +1,245 @@
+{
+    "data" : [
+        {
+            "image": "https://loremflickr.com/640/480/animals",
+            "name": "Tabitha Reichert DDS",
+            "rating": 2,
+            "location": "Pune",
+            "price": 72,
+            "id": 1
+        },
+        {
+            "image": "https://loremflickr.com/640/480/animals",
+            "name": "Blanca Roberts DVM",
+            "rating": 4,
+            "location": "Pune",
+            "price": 75,
+            "id": 2
+        },
+        {
+            "image": "https://loremflickr.com/640/480/animals",
+            "name": "Miss Stephen Hand",
+            "rating": 4,
+            "location": "Pune",
+            "price": 18,
+            "id": 3
+        },
+        {
+            "image": "https://loremflickr.com/640/480/animals",
+            "name": "Katie Deckow",
+            "rating": 1,
+            "location": "Pune",
+            "price": 42,
+            "id": 4
+        },
+        {
+            "image": "https://loremflickr.com/640/480/animals",
+            "name": "Ramiro Keebler",
+            "rating": 5,
+            "location": "Pune",
+            "price": 16,
+            "id": 5
+        },
+        {
+            "image": "https://loremflickr.com/640/480/animals",
+            "name": "Bob Schmitt",
+            "rating": 1,
+            "location": "Delhi",
+            "price": 31,
+            "id": 6
+        },
+        {
+            "image": "https://loremflickr.com/640/480/animals",
+            "name": "Mr. Toby Ryan",
+            "rating": 5,
+            "location": "Delhi",
+            "price": 44,
+            "id": 7
+        },
+        {
+            "image": "https://loremflickr.com/640/480/animals",
+            "name": "Karen Lakin",
+            "rating": 4,
+            "location": "Delhi",
+            "price": 21,
+            "id": 8
+        },
+        {
+            "image": "https://loremflickr.com/640/480/animals",
+            "name": "Brett Auer",
+            "rating": 3,
+            "location": "Delhi",
+            "price": 38,
+            "id": 9
+        },
+        {
+            "image": "https://loremflickr.com/640/480/animals",
+            "name": "Jonathon Stoltenberg",
+            "rating": 5,
+            "location": "Delhi",
+            "price": 15,
+            "id": 10
+        },
+        {
+            "image": "https://loremflickr.com/640/480/animals",
+            "name": "Angelo Sauer",
+            "rating": 1,
+            "location": "Banglore",
+            "price": 6,
+            "id": 11
+        },
+        {
+            "image": "https://loremflickr.com/640/480/animals",
+            "name": "Esther Bartoletti",
+            "rating": 2,
+            "location": "Banglore",
+            "price": 16,
+            "id": 12
+        },
+        {
+            "image": "https://loremflickr.com/640/480/animals",
+            "name": "Mrs. Manuel Howell",
+            "rating": 5,
+            "location": "Banglore",
+            "price": 0,
+            "id": 13
+        },
+        {
+            "image": "https://loremflickr.com/640/480/animals",
+            "name": "Melody Waters",
+            "rating": 2,
+            "location": "Banglore",
+            "price": 90,
+            "id": 14
+        },
+        {
+            "image": "https://loremflickr.com/640/480/animals",
+            "name": "Jackie Lueilwitz",
+            "rating": 4,
+            "location": "Banglore",
+            "price": 97,
+            "id": 15
+        },
+        {
+            "image": "https://loremflickr.com/640/480/animals",
+            "name": "Cesar Fay",
+            "rating": 3,
+            "location": "Mumbai",
+            "price": 83,
+            "id": 16
+        },
+        {
+            "image": "https://loremflickr.com/640/480/animals",
+            "name": "Robin Roberts",
+            "rating": 5,
+            "location": "Mumbai",
+            "price": 4,
+            "id": 17
+        },
+        {
+            "image": "https://loremflickr.com/640/480/animals",
+            "name": "Miss Elmer Ernser",
+            "rating": 2,
+            "location": "Mumbai",
+            "price": 12,
+            "id": 18
+        },
+        {
+            "image": "https://loremflickr.com/640/480/animals",
+            "name": "Nathaniel Schuster",
+            "rating": 3,
+            "location": "Mumbai",
+            "price": 83,
+            "id": 19
+        },
+        {
+            "image": "https://loremflickr.com/640/480/animals",
+            "name": "Ms. Monica Steuber",
+            "rating": 1,
+            "location": "Mumbai",
+            "price": 95,
+            "id": 20
+        },
+        {
+            "image": "https://loremflickr.com/640/480/animals",
+            "name": "Dorothy Langworth",
+            "rating": 4,
+            "location": "Hyderabad",
+            "price": 37,
+            "id": 21
+        },
+        {
+            "image": "https://loremflickr.com/640/480/animals",
+            "name": "Marcella Padberg",
+            "rating": 5,
+            "location": "Hyderabad",
+            "price": 97,
+            "id": 22
+        },
+        {
+            "image": "https://loremflickr.com/640/480/animals",
+            "name": "Tracy Gleason V",
+            "rating": 3,
+            "location": "Hyderabad",
+            "price": 6,
+            "id": 23
+        },
+        {
+            "image": "https://loremflickr.com/640/480/animals",
+            "name": "Faith Berge",
+            "rating": 2,
+            "location": "Hyderabad",
+            "price": 21,
+            "id": 24
+        },
+        {
+            "image": "https://loremflickr.com/640/480/animals",
+            "name": "Wesley Beahan",
+            "rating": 1,
+            "location": "Hyderabad",
+            "price": 11,
+            "id": 25
+        },
+        {
+            "image": "https://loremflickr.com/640/480/animals",
+            "name": "Guadalupe Hermiston",
+            "rating": 3,
+            "location": "Lucknow",
+            "price": 4,
+            "id": 26
+        },
+        {
+            "image": "https://loremflickr.com/640/480/animals",
+            "name": "Mr. Sonja Schneider",
+            "rating": 2,
+            "location": "Lucknow",
+            "price": 1,
+            "id": 27
+        },
+        {
+            "image": "https://loremflickr.com/640/480/animals",
+            "name": "Mrs. Georgia Homenick",
+            "rating": 5,
+            "location": "Lucknow",
+            "price": 58,
+            "id": 28
+        },
+        {
+            "image": "https://loremflickr.com/640/480/animals",
+            "name": "Michael Rohan",
+            "rating": 1,
+            "location": "Lucknow",
+            "price": 7,
+            "id": 29
+        },
+        {
+            "image": "https://loremflickr.com/640/480/animals",
+            "name": "Herbert Christiansen",
+            "rating": 4,
+            "location": "Lucknow",
+            "price": 89,
+            "id": 30
+        }
+    ]
+}
+
