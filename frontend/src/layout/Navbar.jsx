@@ -1,8 +1,7 @@
-import { Box, Text, Image, Button,HStack, Menu, MenuButton, MenuList, MenuItem, PopoverTrigger, PopoverContent, PopoverArrow, PopoverCloseButton, PopoverBody, Popover } from '@chakra-ui/react'
+import { Box, Image,HStack} from '@chakra-ui/react'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { AiTwotoneHeart } from 'react-icons/ai'
-import { ChevronDownIcon } from '@chakra-ui/icons';
 import Dropdown from './Dropdownmenu';
 
 const Navbar = () => {
