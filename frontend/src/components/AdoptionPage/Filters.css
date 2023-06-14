@@ -1,0 +1,26 @@
+.FilterDiv{
+    display: flex;
+    flex-direction: column;
+/* border: 1px solid red; */
+    margin-top: 40px;
+}
+
+select{
+    height: 40px;
+    border-radius: 20px;
+    font-size: 20px;
+    padding: 3px;
+}
+.optionAny{
+    text-align: center;
+}
+.FilterBox{
+    /* border: 1px solid red; */
+    display:flex;
+    flex-direction: column;
+    margin:auto;
+    width: 60%;
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
