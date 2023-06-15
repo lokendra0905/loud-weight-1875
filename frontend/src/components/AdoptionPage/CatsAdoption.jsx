@@ -1,7 +1,7 @@
 import React from 'react'
-import { Box, SimpleGrid, border } from "@chakra-ui/react"
+import { Box, Button, SimpleGrid, border } from "@chakra-ui/react"
 import Filters from './Filters'
-const DogsAdoption = () => {
+const CatAdoption = () => {
 let data=[]
   return (
     <Box>
@@ -11,6 +11,7 @@ let data=[]
         <Filters
         />
       </Box>
+      
       <SimpleGrid
         display={"grid"}
         gridTemplateColumns="repeat(4,23%)"
@@ -19,7 +20,9 @@ let data=[]
         width={"70%"}
         marginRight={"8%"}
         marginTop={"20px"}
+
       >
+
         {data.map((el) => (
           <Box height={"300px"} _hover={{ border: "1px solid blue" }} backgroundColor={"#ffffff "}>
             <img src={el.image} alt="" width="100%" height={"200px"} />
@@ -42,4 +45,4 @@ let data=[]
   )
 }
 
-export default DogsAdoption
+export default CatAdoption
