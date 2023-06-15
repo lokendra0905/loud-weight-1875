@@ -2,6 +2,38 @@ import { Avatar, Box, Button, Center, Flex, Heading, Image, Stack, Text, useColo
 import React, { useEffect, useState } from 'react'
 
 import Data from "../db.json"
+import { BsStar, BsStarFill, BsStarHalf } from 'react-icons/bs';
+
+
+var numReviews = 100;
+
+function Rating({ rating }) {
+    return (
+        <Box display="flex" alignItems="center">
+            {Array(5)
+                .fill('')
+                .map((_, i) => {
+                    const roundedRating = Math.round(rating * 1) / 2;
+                    if (roundedRating - i >= 1) {
+                        return (
+                            <BsStarFill
+                                key={i}
+                                style={{ marginLeft: '1' }}
+                                color={i < rating ? 'teal.500' : 'gray.300'}
+                            />
+                        );
+                    }
+                    if (roundedRating - i === 0.5) {
+                        return <BsStarHalf key={i} style={{ marginLeft: '1' }} />;
+                    }
+                    return <BsStar key={i} style={{ marginLeft: '1' }} />;
+                })}
+            <Box as="span" ml="2" color="gray.600" fontSize="sm">
+                {numReviews} review{numReviews > 1 && 's'}
+            </Box>
+        </Box>
+    );
+}
 
 const ShelterCard = ({ name, image, rating, location, id }) => {
     const [status, setStatus] = useState(false)
@@ -46,9 +78,13 @@ const ShelterCard = ({ name, image, rating, location, id }) => {
 
                             <Stack direction={"column"} justify={"center"} spacing={6}>
                                 <Stack spacing={0} align={"center"}>
-                                    <Text fontWeight={"400"} textColor={"b"} color={"gray.500"}>
+                                    {/* <Text fontWeight={"400"} textColor={"b"} color={"gray.500"}>
                                         Rating: {rating}
+                                    </Text> */}
+                                    <Text fontWeight={"400"} textColor={"b"} color={"#6A00FF"}>
+                                        <Rating di rating={rating} />
                                     </Text>
+
                                 </Stack>
                                 <Stack spacing={0} align={"center"}>
                                     <Heading fontSize={"md"} textColor={"b"} color={"black.500"}>
