@@ -3,7 +3,7 @@ import React from 'react'
 
 export const HomePage = () => {
     return (
-        <Box>
+        <Box h={"100vh"}>
             <Text>HomePage Component</Text>
         </Box>
     )
