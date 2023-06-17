@@ -1,7 +1,8 @@
-import { Box, Text, Image, Span, useStatStyles } from "@chakra-ui/react";
+import { Box,  Image,  List,  ListItem,  UnorderedList } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { AiTwotoneHeart } from "react-icons/ai";
 import { GiCrossedBones } from "react-icons/gi";
+import { Link } from "react-router-dom";
 
 export const Sidebar = ({ hv, handleTogleSidebar }) => {
   const handleTogle = () => {
@@ -58,6 +59,15 @@ export const Sidebar = ({ hv, handleTogleSidebar }) => {
           </Box>{" "}
         </Box>
       </Box>
+      
+   <UnorderedList listStyleType={"none"}  mt={"40px"} spacing={"30px"} fontSize={"md"} fontWeight={"bold"} ml={"20px"}color={"#6504b5"} fontFamily={"sans-serif"} >
+    <ListItem><Link> ADOPT OR GET INVOLVED</Link></ListItem>
+    <ListItem><Link> DOGS & PUPPIES</Link></ListItem>
+    <ListItem><Link> CATS & KITTENS</Link></ListItem>
+    <ListItem><Link> OTHER TYPES OF PETS</Link></ListItem>
+   
+   </UnorderedList>
+
     </Box>
   );
 };
