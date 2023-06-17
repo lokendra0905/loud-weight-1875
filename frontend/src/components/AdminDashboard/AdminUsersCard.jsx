@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux"
 
 
 
-export const AdminUserCard = ({name,email,role,_id,handleChangeRole})=>{
+export const AdminUserCard = ({name,email,role,_id,handleRefresh})=>{
     const dispatch = useDispatch()
     const handleEdit = () =>{
         const data = {
@@ -12,7 +12,7 @@ export const AdminUserCard = ({name,email,role,_id,handleChangeRole})=>{
             role: (role === "admin") ? "user" : "admin" 
         }
         dispatch(changeUserRole(_id,data))
-        handleChangeRole()
+        handleRefresh()
     } 
     return(
            

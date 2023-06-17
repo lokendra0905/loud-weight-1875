@@ -5,18 +5,42 @@ import {
   FormControl,
   FormLabel,
   HStack,
-  Heading,
+  Heading, 
   IconButton, 
   Input,
   Text,
   VStack,
 } from "@chakra-ui/react";
-import React from "react";
+import axios from "axios";
+import React, { useState } from "react";
 import { AiOutlineFacebook } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
-import { NavLink } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { NavLink, useNavigate } from "react-router-dom";
+import { userDetails } from "../../Redux/loginReducer/action";
+
 
 export const Login = () => {
+  const [email,setEmail] = useState("")
+  const [password,setPassword] = useState("")
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const handleLogin = ()=>{
+    const loginData = {
+      email,
+      pass:password
+    }
+
+      dispatch(userDetails(loginData))
+      if (email.includes("@petconnects.com")) {
+        navigate("/admindashboard");
+      } else {
+        navigate("/");
+      }
+    // setEmail("")
+    // setPassword("")
+  }
+
   return (
     <Box
       bg="#f9efef"
@@ -26,7 +50,7 @@ export const Login = () => {
       alignItems="center"
     >
       <Box
-        w="40%"
+        w={{ base: '300px', md: '400px', lg: '600px' }}
         m="auto"
         p={50}
         rounded={10}
@@ -34,17 +58,17 @@ export const Login = () => {
         boxShadow="rgba(0, 0, 0, 0.24) 0px 3px 8px"
       >
         <Heading fontWeight={500}>Login</Heading>
-        <VStack m="auto" p={50} spacing={5}>
+        <VStack m="auto" p={{ base: '10px', md: '20px', lg: '50px' }} spacing={5}>
           <FormControl isRequired>
             <FormLabel>Email</FormLabel>
-            <Input type="email" placeholder="Enter email" />
+            <Input type="email" placeholder="Enter email" onChange={(e)=>setEmail(e.target.value)}/>
           </FormControl>
           <FormControl isRequired>
             <FormLabel>Password</FormLabel>
-            <Input type="password" placeholder="Enter password" />
+            <Input type="password" placeholder="Enter password" onChange={(e)=>setPassword(e.target.value)}/>
           </FormControl>
         </VStack> 
-        <Button bg="#673ab7" color="white">
+        <Button bg="#673ab7" color="white" onClick={handleLogin}>
           Login
         </Button>
         <Text mt={5}>Or log in with:</Text>
