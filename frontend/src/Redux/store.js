@@ -4,6 +4,7 @@ import {
   legacy_createStore
 } from "redux";
 import thunk from "redux-thunk";
+import { reducer as shelterReducer } from "./shelterReducer/reducer";
 import {reducer as adminUserReducer} from "./adminUserReducer/reducer"
 import {reducer as adminPetsReducer} from "./adminPetsReducer/reducer"
 
