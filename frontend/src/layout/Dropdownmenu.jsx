@@ -32,6 +32,7 @@ const Dropdown = ({ texts, title, navlink, we, he }) => {
         borderRadius={"0px 0px 10px 10px"}
         top={"100%"}
         overflow={"hidden"}
+        zIndex={"1000"}
       >
         {texts.map((e, i) => (
           <ListItem mt={"10px"} key={i}>
