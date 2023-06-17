@@ -1,7 +1,6 @@
 
+
 import './App.css';
-import { Footer } from './layout/Footer';
-import Navbar from './layout/Navbar';
 import {MainRoutes} from "./routes/MainRoutes"
 
 function App() {
@@ -9,9 +8,8 @@ function App() {
     <div className="App">
       
       <MainRoutes />
-     
     </div>
   );
-}
+} 
 
 export default App;

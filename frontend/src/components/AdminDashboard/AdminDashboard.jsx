@@ -1,97 +1,100 @@
 import {
   Box,
-  Button,
   Flex,
   Grid,
   GridItem,
-  HStack,
   Heading,
-  SimpleGrid,
   Table,
-  Tbody,
-  Td,
   Text,
   Th,
   Thead,
-  Tr,
-  VStack,
+  Tr
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllUsers } from "../../Redux/adminUserReducer/action";
+import { AdminUserCard } from "./AdminUsersCard";
+import { AdminSideBar } from "./AdminSideBar";
 
 export const AdminDashboard = () => {
-    const [data,setData] = useState([])
-    useEffect(()=>{
-        fetch("http://localhost:8080/users/",{
-            method:"GET",
-            headers:{
-                "Content-Type":"application/json"
-            }
-        }).then(res=>res.json())
-        .then((res)=>{
-            console.log(res);
-            setData(res)
-        })
-        .catch(error=>console.log(error))
-    },[])
-    console.log("...data",data);
+  const dispatch = useDispatch();
+  const UsersList = useSelector((store) => store.adminUserReducer.allUsers);
+  const [changeRole, setChangeRole] = useState(false)
+ 
+  const handleChangeRole = ()=>{
+    setChangeRole(!changeRole)
+  }
+  useEffect(() => {
+    dispatch(getAllUsers);
+  }, [changeRole]);
+  console.log("...data", UsersList);
 
   return (
-    <Box border="1px solid black">
+    <Box>
       <Flex flex="1">
-        <Box border="1px solid black" bg="gray.100">
-          <VStack
-            w={200}
-            border="1px solid red"
-            bg="gray.100"
-            display="flex"
-            alignItems="left"
-          >
-            <Button>Dashboard</Button>
-            <Button>Pets & Adoption</Button>
-            <Button>Pets & Shelter</Button>
-          </VStack>
-        </Box>
-        <Box flex="1" p={5}>
+        <AdminSideBar />
+        <Box flex="1" p={5} >
           {" "}
           {/* Add flex="1" to make it take up remaining space */}
-          <Grid templateColumns={"repeat(4, 1fr)"} border="1px solid black" gap={10} textAlign={"left"}>
-            <GridItem border="1px solid black" rounded={5} p={4}>
-              <Text fontSize={20} mb={10}>Total Users</Text>
-              <Text fontSize={30} fontWeight={500}>234</Text>
+          <Grid
+            templateColumns={"repeat(4, 1fr)"}
+           
+            gap={10}
+            textAlign={"left"}
+            
+          >
+            <GridItem rounded={5} p={4} bg="#dbdbf5" boxShadow= "rgba(0, 0, 0, 0.16) 0px 1px 4px">
+              <Text fontSize={20} mb={10}>
+                Total Users
+              </Text>
+              <Text fontSize={30} fontWeight={500}>
+                234
+              </Text>
             </GridItem>
-            <GridItem border="1px solid black" rounded={5} p={4}>
-              <Text fontSize={20} mb={10}>Total Users</Text>
-              <Text fontSize={30} fontWeight={500}>234</Text>
+            <GridItem rounded={5} p={4} bg="#dbdbf5" boxShadow= "rgba(0, 0, 0, 0.16) 0px 1px 4px">
+              <Text fontSize={20} mb={10}>
+                Total Users
+              </Text>
+              <Text fontSize={30} fontWeight={500}>
+                234
+              </Text>
             </GridItem>
-            <GridItem border="1px solid black" rounded={5} p={4}>
-              <Text fontSize={20} mb={10}>Total Users</Text>
-              <Text fontSize={30} fontWeight={500}>234</Text>
+            <GridItem rounded={5} p={4} bg="#dbdbf5" boxShadow= "rgba(0, 0, 0, 0.16) 0px 1px 4px">
+              <Text fontSize={20} mb={10}>
+                Total Users
+              </Text>
+              <Text fontSize={30} fontWeight={500}>
+                234
+              </Text>
             </GridItem>
-            <GridItem border="1px solid black" rounded={5} p={4}>
-              <Text fontSize={20} mb={10}>Total Users</Text>
-              <Text fontSize={30} fontWeight={500}>234</Text>
+            <GridItem rounded={5} p={4} bg="#dbdbf5" boxShadow= "rgba(0, 0, 0, 0.16) 0px 1px 4px">
+              <Text fontSize={20} mb={10}>
+                Total Users
+              </Text>
+              <Text fontSize={30} fontWeight={500}>
+                234
+              </Text>
             </GridItem>
           </Grid>
-          <Box mt={30}>
-            <Heading>List of Users</Heading>
-          <Table variant="striped" colorScheme="gray" border="1px solid black">
-      <Thead >
-        <Tr border="1px solid black">
-          <Th>Name</Th>
-          <Th>Email</Th>
-          <Th>Role</Th>
-        </Tr>
-      </Thead>
-      <Tbody border="1px solid black">
-        {data.map((user, index) => (
-          <Tr key={index}>
-            <Td>{user.name}</Td>
-            <Td>{user.email}</Td>
-            <Td>{user.role}</Td>
-          </Tr>
-        ))}
-      </Tbody>
-    </Table>
+          <Box mt={50} >
+            <Heading mb={30} fontWeight={400}>List of Users</Heading>
+            <Table
+              variant="striped"
+              borderWidth="2px"
+              boxShadow="rgba(0, 0, 0, 0.24) 0px 3px 8px"
+            >
+              <Thead>
+                <Tr>
+                  <Th>Name</Th>
+                  <Th>Email</Th>
+                  <Th>Role</Th>
+                </Tr>
+              </Thead>
+              {UsersList && UsersList.length > 0 &&
+                UsersList.map((item) => (
+                  <AdminUserCard key={item._id} {...item} handleChangeRole={handleChangeRole}/>
+                ))}
+            </Table>
           </Box>
         </Box>
       </Flex>

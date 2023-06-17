@@ -43,7 +43,7 @@ export const Login = () => {
             <FormLabel>Password</FormLabel>
             <Input type="password" placeholder="Enter password" />
           </FormControl>
-        </VStack>
+        </VStack> 
         <Button bg="#673ab7" color="white">
           Login
         </Button>
