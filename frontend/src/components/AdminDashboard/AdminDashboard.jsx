@@ -16,24 +16,32 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllUsers } from "../../Redux/adminUserReducer/action";
 import { AdminUserCard } from "./AdminUsersCard";
 import { AdminSideBar } from "./AdminSideBar";
+import { getAllPets, getAllPetsNumber } from "../../Redux/adminPetsReducer/action";
 
 export const AdminDashboard = () => {
   const dispatch = useDispatch();
   const UsersList = useSelector((store) => store.adminUserReducer.allUsers);
+  const AllPetsList = useSelector((store) => store.adminPetsReducer.petsList);
+  const totalPets = useSelector((store) => store.adminPetsReducer.totalData);
+
   const [refresh, setRefresh] = useState(false)
-  const [isTableSmall] = useMediaQuery("(max-width: 500px)")
+
+  const shouldRenderAccordion = false;
   const handleRefresh = ()=>{
     setRefresh(!refresh)
   }
   useEffect(() => {
     dispatch(getAllUsers);
+    dispatch(getAllPetsNumber())
   }, [refresh]);
-  console.log("...data", UsersList);
+  const sold = AllPetsList.filter(el => el.status === "Sold");
+  
+ 
 
   return (
     <Box>
       <Flex flex="1">
-        <AdminSideBar />
+        <AdminSideBar shouldRenderAccordion={shouldRenderAccordion}/>
         <Box flex="1" p={5} >
           {" "}
           {/* Add flex="1" to make it take up remaining space */}
@@ -54,26 +62,26 @@ export const AdminDashboard = () => {
             </GridItem>
             <GridItem rounded={5} p={4} bg="#dbdbf5" boxShadow= "rgba(0, 0, 0, 0.16) 0px 1px 4px">
               <Text fontSize={20} mb={10}>
-                Total Users
+                Total Pets
               </Text>
               <Text fontSize={30} fontWeight={500}>
-                234
+                {totalPets}
               </Text>
             </GridItem>
             <GridItem rounded={5} p={4} bg="#dbdbf5" boxShadow= "rgba(0, 0, 0, 0.16) 0px 1px 4px">
               <Text fontSize={20} mb={10}>
-                Total Users
+              Total Pets Sold
               </Text>
               <Text fontSize={30} fontWeight={500}>
-                234
+                {sold.length}
               </Text>
             </GridItem>
             <GridItem rounded={5} p={4} bg="#dbdbf5" boxShadow= "rgba(0, 0, 0, 0.16) 0px 1px 4px">
               <Text fontSize={20} mb={10}>
-                Total Users
+                New Pets
               </Text>
               <Text fontSize={30} fontWeight={500}>
-                234
+                11
               </Text>
             </GridItem>
           </Grid>
@@ -84,11 +92,11 @@ export const AdminDashboard = () => {
               borderWidth="2px"
               boxShadow="rgba(0, 0, 0, 0.24) 0px 3px 8px"
             >
-              <Thead>
+              <Thead >
                 <Tr>
-                  <Th>Name</Th>
-                  <Th>Email</Th>
-                  <Th>Role</Th>
+                  <Th textAlign={"center"}>Name</Th>
+                  <Th textAlign={"center"}>Email</Th>
+                  <Th textAlign={"center"}>Role</Th>
                 </Tr>
               </Thead>
               {UsersList && UsersList.length > 0 &&

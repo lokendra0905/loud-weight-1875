@@ -9,7 +9,7 @@ export const AdminUserCard = ({name,email,role,_id,handleRefresh})=>{
     const handleEdit = () =>{
         const data = {
             
-            role: (role === "admin") ? "user" : "admin" 
+            role: (role === "Admin") ? "User" : "Admin" 
         }
         dispatch(changeUserRole(_id,data))
         handleRefresh()
@@ -18,10 +18,10 @@ export const AdminUserCard = ({name,email,role,_id,handleRefresh})=>{
            
       <Tbody>
        
-          <Tr borderWidth="2px">
-            <Td>{name}</Td>
-            <Td>{email}</Td>
-            <Td><Button onClick={handleEdit} bg="#af89f1">{role}</Button></Td>
+          <Tr borderWidth="2px" >
+            <Td textAlign={"center"}>{name}</Td>
+            <Td textAlign={"center"}>{email}</Td>
+            <Td textAlign={"center"}><Button onClick={handleEdit} bg="#af89f1">{role}</Button></Td>
           </Tr>
     
       </Tbody>

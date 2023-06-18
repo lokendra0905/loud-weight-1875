@@ -4,7 +4,8 @@ import { GET_USERS_SUCCESS, LOGIN_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS, PATCH_U
 const initialState = {
     isLoading:false,
     isError:false,
-    userRole : ""
+    userRole : "",
+    userID: ""
 }
 
 
@@ -23,7 +24,7 @@ export const reducer = (state=initialState,{type,payload})=>{
         
         case LOGIN_SUCCESS:{
             return {
-                ...state,isLoading:false,userRole:payload
+                ...state,isLoading:false,userID:payload
             }
         }
         default:{

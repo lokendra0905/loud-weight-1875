@@ -1,10 +1,12 @@
-import { DELETE_PETS_SUCCESS, GET_PETS_SUCCESS, PATCH_PETS_SUCCESS, PETS_FAILURE, PETS_REQUEST } from "./actionTypes"
+import { ADD_PETS_SUCCESS, DELETE_PETS_SUCCESS, GET_PETS_SUCCESS, PATCH_PETS_SUCCESS, PETS_FAILURE, PETS_REQUEST } from "./actionTypes"
 
 
 const initialState = {
     isLoading:false,
     isError:false,
-    petsList : []
+    petsList : [],
+    refresh:0,
+    totalData:0
 }
 
 export const reducer = (state=initialState,{type,payload})=>{
@@ -22,7 +24,7 @@ export const reducer = (state=initialState,{type,payload})=>{
         
         case GET_PETS_SUCCESS:{
             return {
-                ...state,isLoading:false,petsList:payload
+                ...state,isLoading:false,petsList:payload.allPets,totalData:payload.noOfPets
             }
         }
         case PATCH_PETS_SUCCESS:{
@@ -31,6 +33,11 @@ export const reducer = (state=initialState,{type,payload})=>{
             }
         }
         case DELETE_PETS_SUCCESS:{
+            return {
+                ...state,isLoading:false,petsList:payload
+            }
+        }
+        case ADD_PETS_SUCCESS:{
             return {
                 ...state,isLoading:false
             }
