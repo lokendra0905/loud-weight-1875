@@ -19,7 +19,7 @@ import {  useState } from "react";
 import { useDispatch } from "react-redux";
 import { deletePetDetails, updatePetDetails } from "../../Redux/adminPetsReducer/action";
 
-export const AdminPetsCard = ({ avatar, email, first_name,_id }) => {
+export const AdminPetsCard = ({ avatar, email, first_name,_id ,handleRefresh}) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [newemail,setEmail] = useState('')
   const dispatch = useDispatch()
@@ -37,17 +37,21 @@ export const AdminPetsCard = ({ avatar, email, first_name,_id }) => {
             email:newemail
         }
         dispatch(updatePetDetails(_id,data))
+        handleRefresh()
+
       }
       const handleDelete =  () => {
         
         dispatch(deletePetDetails(_id))
+        handleRefresh()
+
       }
   return (
     <GridItem>
       <Image src={avatar} w="100%" alt="image" />
       <Text>{first_name}</Text>
       <Text>{email}</Text>
-      <Flex>
+      <Flex justifyContent="space-around">
       <Button onClick={handleEdit}>Edit</Button>
       <Button onClick={handleDelete}>Delete</Button>
       </Flex>

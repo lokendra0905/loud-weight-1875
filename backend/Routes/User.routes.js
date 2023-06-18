@@ -43,10 +43,22 @@ userRouter.post("/login", async (req, res) => {
     if (!user) {
       return res.status(400).json({ error: "User Not Found Please Register" });
     }
-    bcrypt.compare(password, user.password, (err , result) => {
+    bcrypt.compare(password, user.password, (err, result) => {
       if (result) {
-        const token = jwt.sign({ course: "backend" }, "masai");
-        return res.status(200).json({ message: "Login Successful", token });
+        const token = jwt.sign(
+          { userID: user._id, user: user.name },
+          "lokendra",
+          { expiresIn: "15m" }
+        );
+        const refreshToken = jwt.sign(
+          { userID: user._id, user: user.name },
+          "lokendra",
+          { expiresIn: "1d" }
+        );
+
+        return res
+          .status(200)
+          .json({ message: "Login Successful", token, refreshToken });
       } else {
         return res.status(400).json({ message: "Wrong Crediential" });
       }
@@ -57,55 +69,6 @@ userRouter.post("/login", async (req, res) => {
   }
 });
 
-userRouter.post("/logout", async (req, res) => {});
-
 module.exports = {
   userRouter,
 };
-
-const data = [
-  {
-    image: [
-      "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/64228601/1/?bust=1683713877&width=1080",
-      "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/64228601/2/?bust=1683713811&width=1080",
-    ],
-    name: "Mamba",
-    gender: "Male",
-    age: "Adult",
-    breed: "Affenpinscher",
-    size: "Medium",
-    color: "Black",
-    type: "Dog",
-    price: 20000,
-    location: "Delhi",
-  },
-  {
-    image: [
-      "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/48100346/1/?bust=1591093605&width=1080",
-    ],
-    name: "Mocha",
-    gender: "Female",
-    age: "Young",
-    breed: "Affenpinscher",
-    size: "Small",
-    color: "Black",
-    type: "Dog",
-    price: 20000,
-    location: "Delhi",
-  },
-  {
-    image: [
-      "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/64228601/1/?bust=1683713877&width=1080",
-      "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/64228601/2/?bust=1683713811&width=1080",
-    ],
-    name: "Mamba",
-    gender: "Male",
-    age: "Adult",
-    breed: "Affenpinscher",
-    size: "Medium",
-    color: "Black",
-    type: "Dog",
-    price: 20000,
-    location: "Delhi",
-  },
-];

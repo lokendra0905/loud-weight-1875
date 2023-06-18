@@ -11,11 +11,32 @@ import {
   SimpleGrid,
   Text,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useState } from "react";
 import { AiOutlineFacebook } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
+import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { registerUser } from "../../Redux/registerReducer/action";
 export const Register = () => {
+  const [email, setEmail] = useState("");
+  const [fName, setFname] = useState("");
+  const [LName, setLname] = useState("");
+  const [password, setPass] = useState("");
+
+  const dispatch = useDispatch();
+  const handleRegister = () => {
+    const regData = {
+      email,
+      pass:password,
+      name:`${fName+" "+LName}`
+    }
+    dispatch(registerUser(regData));
+    setEmail("")
+    setFname("")
+    setLname("")
+    setPass("")
+  };
+
   return (
     <Box
       bg="#f9efef"
@@ -25,7 +46,7 @@ export const Register = () => {
       alignItems="center"
     >
       <Box
-        w="50%"
+        w={{ base: '300px', md: '400px', lg: '600px' }}
         m="auto"
         p={50}
         rounded={10}
@@ -34,25 +55,41 @@ export const Register = () => {
         textAlign="center"
       >
         <Heading fontWeight={500}>Signup</Heading>
-        <SimpleGrid columns={2} spacing={5} mt={10}>
+        <SimpleGrid columns={{ base: 1, md: 1, lg: 2 }} spacing={5} mt={10}>
           <FormControl isRequired>
             <FormLabel>First Name</FormLabel>
-            <Input type="text" placeholder="Enter name" />
+            <Input
+              type="text"
+              placeholder="Enter name"
+              onChange={(e) => setFname(e.target.value)}
+            />
           </FormControl>
-          <FormControl >
+          <FormControl>
             <FormLabel>Last Name</FormLabel>
-            <Input type="text" placeholder="Enter last name" />
+            <Input
+              type="text"
+              placeholder="Enter last name"
+              onChange={(e) => setLname(e.target.value)}
+            />
           </FormControl>
           <FormControl isRequired>
             <FormLabel>Email</FormLabel>
-            <Input type="email" placeholder="Enter email" />
+            <Input
+              type="email"
+              placeholder="Enter email"
+              onChange={(e) => setEmail(e.target.value)}
+            />
           </FormControl>
           <FormControl isRequired>
             <FormLabel>Password</FormLabel>
-            <Input type="password" placeholder="Enter password" />
+            <Input
+              type="password"
+              placeholder="Enter password"
+              onChange={(e) => setPass(e.target.value)}
+            />
           </FormControl>
         </SimpleGrid>
-        <Button mt={10} bg="#673ab7" color="white">
+        <Button mt={10} bg="#673ab7" color="white" onClick={handleRegister}>
           Signup
         </Button>
         <Text mt={5}>OR</Text>
