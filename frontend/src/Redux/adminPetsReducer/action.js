@@ -3,7 +3,7 @@ import { ADD_PETS_SUCCESS, DELETE_PETS_SUCCESS, GET_PETS_SUCCESS, PATCH_PETS_SUC
 
 export const getAllPets=(dispatch)=>{
     dispatch({type:PETS_REQUEST})
-   axios.get(`https://real-pink-donkey-coat.cyclic.app/pets`,).then((res)=>{
+   axios.get(`https://real-pink-donkey-coat.cyclic.app/pets/`,).then((res)=>{
         dispatch({type:GET_PETS_SUCCESS,payload:{allPets:res.data.data,noOfPets:res.data.totalData}})
         console.log("dta...",res.data);
     })

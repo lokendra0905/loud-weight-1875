@@ -18,18 +18,22 @@ export const Banner = () => {
     {
       title: "Dog",
       image: "assets/dogs.svg",
+      url:"/dogAdoptionPage"
     },
     {
       title: "Cats",
       image: "assets/cats.svg",
+      url:"/dogAdoptionPage"
     },
     {
       title: "Other Animals",
       image: "assets/other_animals.svg",
+      url:"/dogAdoptionPage"
     },
     {
       title: "Shelters",
       image: "assets/shelters.svg",
+      url:"/shelters"
     },
   ];
 

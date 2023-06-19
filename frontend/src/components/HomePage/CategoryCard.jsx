@@ -1,4 +1,5 @@
 import { Box, Image, Text } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 import React from "react";
 
 export const CategoryCard = ({ data }) => {
@@ -10,15 +11,17 @@ export const CategoryCard = ({ data }) => {
       bg={"white"}
       _hover={{ border: "2px solid #6504b5" }}
     >
-      <Image src={data.image} w={"60%"} m={"auto"} alt={data.title} />
-      <Text
-        textAlign={"center"}
-        fontSize={"18px"}
-        p={2}
-        fontWeight={"semibold"}
-      >
-        {data.title}
-      </Text>
+      <Link to={data.url}>
+        <Image src={data.image} w={"60%"} m={"auto"} alt={data.title} />
+        <Text
+          textAlign={"center"}
+          fontSize={"18px"}
+          p={2}
+          fontWeight={"semibold"}
+        >
+          {data.title}
+        </Text>
+      </Link>
     </Box>
   );
 };

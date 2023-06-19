@@ -29,13 +29,15 @@ export const Navbar = () => {
             gap={"50px"}
           >
             <Box w={"250px"} ml={"40px"}>
-              <Image
-                src={
-                  "https://drive.google.com/uc?id=1RZumzqhGMEoL2aOB-RmBtT6wmO7G7VZf"
-                }
-                alt=""
-                w={"100%"}
-              />
+              <Link to={"/"}>
+                <Image
+                  src={
+                    "https://drive.google.com/uc?id=1RZumzqhGMEoL2aOB-RmBtT6wmO7G7VZf"
+                  }
+                  alt=""
+                  w={"100%"}
+                />
+              </Link>
             </Box>
             <Box ml={10}>
               <Text fontWeight={"700"} fontSize={"20"} color={"#6504b5"}>
@@ -81,7 +83,7 @@ export const Navbar = () => {
                 justifyContent={"center"}
                 _hover={{ color: "green" }}
               >
-                <Link>Sign Up</Link>
+                <Link to={"/register"}>Sign Up</Link>
               </Box>
               <Box
                 fontWeight={"bold"}
@@ -93,7 +95,7 @@ export const Navbar = () => {
                 justifyContent={"center"}
                 _hover={{ color: "green" }}
               >
-                <Link>Log In</Link>
+                <Link to={"/login"}>Log In</Link>
               </Box>
             </Box>
           </Box>

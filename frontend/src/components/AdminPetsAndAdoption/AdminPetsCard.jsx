@@ -124,7 +124,7 @@ export const AdminPetsCard = ({
   }
 
   return (
-    <GridItem boxShadow="rgba(0, 0, 0, 0.24) 0px 3px 8px" p={5} rounded={10}>
+    <GridItem boxShadow="rgba(0, 0, 0, 0.24) 0px 3px 8px" p={5} rounded={10} textAlign={'center'}>
       <Image
         src={image[0]}
         w="100%"
