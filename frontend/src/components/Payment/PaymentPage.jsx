@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Box,
   Heading,
@@ -9,9 +9,15 @@ import {
   Input,
   Button,
   Select,
+  useToast,
 } from "@chakra-ui/react";
+import { useNavigate, useParams } from "react-router-dom";
 
 const PaymentsPage = () => {
+  const navigate = useNavigate();
+  const { amount } = useParams();
+  const toast = useToast();
+  const [days, setDays] = useState(1);
   return (
     <Box
       height={"auto"}
@@ -22,7 +28,18 @@ const PaymentsPage = () => {
       width={"50%"}
       p={8}
     >
-      <Heading mb={4}>Payment Information</Heading>
+      <Heading mb={4} textAlign={"center"}>
+        Payment Information
+      </Heading>
+      <Box>
+        <Input
+          placeholder="Enter Days"
+          onChange={(e) => setDays(e.target.value)}
+        />
+        <Heading textAlign={"center"} mt={3}>
+          Your Total Amount is : ₹{days ? days * amount : amount}
+        </Heading>
+      </Box>
       <Box bg="white" p={8} borderRadius="md">
         <form>
           <Flex mb={4} direction={["column", "row"]}>
@@ -80,7 +97,16 @@ const PaymentsPage = () => {
           <br />
           <Flex justifyContent="center">
             <Button
-              onClick={() => console.log("hiiii")}
+              onClick={() => {
+                toast({
+                  title: "Success",
+                  description: "Payment Successfull",
+                  status: "success",
+                  duration: 9000,
+                  disclosable: true,
+                });
+                navigate("/");
+              }}
               width={"100%"}
               colorScheme={"white"}
               backgroundColor="#6A00FF"

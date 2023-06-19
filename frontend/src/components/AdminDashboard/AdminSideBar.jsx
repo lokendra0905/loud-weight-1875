@@ -103,11 +103,11 @@ export const AdminSideBar = ({ shouldRenderAccordion}) => {
         </Button>
         <Button>Pets & Shelter</Button>
       </VStack>
-      <Box mt={30}>
+      <Box mt={30} w={'100%'}>
         {shouldRenderAccordion && 
         <Button colorScheme="" color="black" onClick={handleAdd}>
-        <Flex align="center">
-          <Text marginRight="2">Add Pet</Text>
+        <Flex m={'auto'} justify={'center'}>
+          <Text marginRight="2" textAlign={'center'}>Add Pet</Text>
           <BiMessageSquareAdd />
         </Flex>
       </Button>

@@ -27,7 +27,7 @@ export const AdminPetsAndAdoption = () => {
     <Box>
       <Flex>
         <AdminSideBar shouldRenderAccordion={shouldRenderAccordion}/>
-        <Box flex={1} mt={50}>
+        <Box flex={1} p={10}>
           <Grid templateColumns={{ base: 'repeat(1, 1fr)', md: 'repeat(2, 1fr)', lg: 'repeat(4, 1fr)' }} gap={6}>
             {
                 AllPetsList?.map((pets)=>(
