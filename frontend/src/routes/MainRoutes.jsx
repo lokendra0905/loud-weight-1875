@@ -20,7 +20,7 @@ export const MainRoutes = () => {
             <Route path='/profile' element={<Profile />}/>
             <Route path='/admindashboard' element={<AdminDashboard />}/>
             <Route path='/dogAdoptionPage' element={<DogsAdoption />}/>
-            <Route path='/DetailsPage/:id' element={<DetailsPage />}/>
+            <Route path='/DetailsPage/:petId' element={<DetailsPage />}/>
         </Routes>
     )
 }
