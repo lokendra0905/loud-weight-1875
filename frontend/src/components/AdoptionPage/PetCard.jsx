@@ -3,9 +3,10 @@ import {Box,Image} from "@chakra-ui/react"
 import {useNavigate}  from "react-router-dom"
 const PetCard = (props) => {
     const {_id}=props
+    let petId=_id
     const navigate=useNavigate()
     const handleBtn=()=>{
-     navigate(`/DetailsPage/${_id}`)
+     navigate(`/DetailsPage/${petId}`)
     }
   return (
     

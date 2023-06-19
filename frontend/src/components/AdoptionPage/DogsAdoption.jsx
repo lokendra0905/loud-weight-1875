@@ -6,25 +6,29 @@ import Filters from './Filters'
 import { getAdoptionData } from '../../Redux/adoptionReducer/action'
 import PetCard from './PetCard'
 const DogsAdoption = () => {
-  let data=useSelector(store=>store.adoptionPetsReducer.adoptionData.data)
+
+
+  let store=useSelector(store=>store.adoptionPetsReducer.adoptionData)
+  let data=store.data
   const [page,setPage]=useState(1)
   const dispatch=useDispatch()
   useEffect(()=>{
     const data={
       params:{
-      page:page
+      page:page,
       }
     }
     dispatch(getAdoptionData(data))
     console.log(data)
   },[page])
-console.log(page)
+const {totalPages}=store
+console.log(store)
   return (
     <Box>
     <Box backgroundColor={"#efeef1 "} display={"flex"}>
       <Box border="1px solid #ffffff" width={"20%"}
       >
-        <Filters
+        <Filters 
         />
       </Box>
       <SimpleGrid
@@ -45,7 +49,7 @@ console.log(page)
       </Box>
       <Box  marginBottom={"20px"} marginLeft={"30%"} >
       <Button backgroundColor={"teal"}  width={"70px"} height={"30px"} color={"white"} margin={"0px 20px"} _hover={{ backgroundColor:"teal", color:"white"}} isDisabled={page==1} onClick={()=>setPage((prev)=>prev-1)}>Previous</Button>
-      <Button backgroundColor={"teal"} width={"70px"} height={"30px"} color={"white"} _hover={{ backgroundColor:"teal", color:"white"}} isDisabled={page==3} onClick={()=>setPage((prev)=>prev+1)}>Next</Button>
+      <Button backgroundColor={"teal"} width={"70px"} height={"30px"} color={"white"} _hover={{ backgroundColor:"teal", color:"white"}} isDisabled={page==totalPages} onClick={()=>setPage((prev)=>prev+1)}>Next</Button>
       </Box>
     </Box>
   )

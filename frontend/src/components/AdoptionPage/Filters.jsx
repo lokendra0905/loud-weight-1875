@@ -1,6 +1,8 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Filters.css';
 import { Box } from "@chakra-ui/react"
+import {useDispatch,useSelector} from "react-redux"
+import { getAdoptionData } from '../../Redux/adoptionReducer/action';
 const arr = [
   {
     "dogs_breed": "Affenpinscher"
@@ -827,12 +829,29 @@ const arr = [
 ]
 
 const Filters = () => {
+  const [gender,setGender]=useState("")
+  const [age,setAge]=useState("")
+  const [breed,setBreed]=useState("")
+  console.log(breed)
+  let store=useSelector(store=>store.adoptionPetsReducer.adoptionData)
+  console.log(store)
+  const dispatch=useDispatch()
+  useEffect(()=>{
+    const data={
+      params:{
+     gender,
+     age,
+     breed
+      }
+    }
+    dispatch(getAdoptionData(data))
+  },[gender])
   return (
     <div className='FilterDiv' >
 
       <Box className='FilterBox'>
         <label>Breed</label>
-        <select  >
+        <select onChange={(e)=>setBreed(e.target.value)}   >
         <option className='optionAny'>Any</option>
           {arr.map((el) => (
             <option value={el.dogs_breed}>{el.dogs_breed}</option>
@@ -842,7 +861,7 @@ const Filters = () => {
 
       <Box className='FilterBox'>
         <label>Age</label>
-        <select  >
+        <select onChange={(e)=>setAge(e.target.value)} >
           <option className='optionAny'>Any</option>
           <option value="Puppy">Puppy</option>
           <option value="Young">Young</option>
@@ -855,7 +874,7 @@ const Filters = () => {
 
       <Box className='FilterBox'>
         <label>Gender</label>
-        <select  >
+        <select  onChange={(e)=>setGender(e.target.value)}>
           <option className='optionAny'>Any</option>
           <option value="Male">Male</option>
           <option value="Female">Female</option>
