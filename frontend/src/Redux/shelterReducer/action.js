@@ -1,13 +1,14 @@
 
 import axios from 'axios'
-import { GET_SHELTER_FAILURE, GET_SHELTER_REQUEST, GET_SHELTER_SUCCESS, POST_GET_STATUS, } from './actionType'
+import { GET_SHELTER_FAILURE, GET_SHELTER_REQUEST, GET_SHELTER_SUCCESS } from './actionType'
 
-export const getSheltererData = (param) => async (dispatch) => {
+export const getShelterData = (params) => async (dispatch) => {
 
   dispatch({ type: GET_SHELTER_REQUEST })
-  return axios.get(`https://tiny-jade-rabbit-gear.cyclic.app/SHELTER`, param)
+      console.log(params,"im")
+  return axios.get(`https://real-pink-donkey-coat.cyclic.app/shelters/`,params)
     .then((res) => {
-      console.log(res.data)
+      // console.log(res.data,"heloo")
       dispatch({ type: GET_SHELTER_SUCCESS, payload: res.data })
     })
     .catch((err) => {
@@ -16,11 +17,5 @@ export const getSheltererData = (param) => async (dispatch) => {
 }
 
 
-export const updateGet = ({ id, status }) => async (dispatch) => {
 
-  return await axios.patch(`https://tiny-jade-rabbit-gear.cyclic.app/SHELTER/${id}`, { status: !status })
-    .then((res) => {
-      dispatch({ type: POST_GET_STATUS, payload: id })
-    })
-}
 

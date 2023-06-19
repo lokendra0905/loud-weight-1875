@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 
 import Data from "../db.json"
 import { BsStar, BsStarFill, BsStarHalf } from 'react-icons/bs';
+import { useNavigate } from 'react-router-dom';
 
 
 var numReviews = 100;
@@ -35,9 +36,10 @@ function Rating({ rating }) {
     );
 }
 
-const ShelterCard = ({ name, image, rating, location, id }) => {
+const ShelterCard = ({ name, image, rating, location, price }) => {
     const [status, setStatus] = useState(false)
 
+    const navigate=useNavigate()
 
     return (
         <Box>
@@ -74,6 +76,7 @@ const ShelterCard = ({ name, image, rating, location, id }) => {
                                 <Heading fontSize={"2xl"} fontWeight={500} fontFamily={"body"}>
                                     {name}
                                 </Heading>
+                                
                             </Stack>
 
                             <Stack direction={"column"} justify={"center"} spacing={6}>
@@ -87,6 +90,10 @@ const ShelterCard = ({ name, image, rating, location, id }) => {
 
                                 </Stack>
                                 <Stack spacing={0} align={"center"}>
+                                <Heading fontSize={"lg"} fontWeight={500} fontFamily={"body"}>
+                                   ₹{price} / Day
+                                </Heading>
+                                <br />
                                     <Heading fontSize={"md"} textColor={"b"} color={"black.500"}>
                                         {location}
                                     </Heading>
@@ -103,7 +110,10 @@ const ShelterCard = ({ name, image, rating, location, id }) => {
                                     transform: "translateY(-2px)",
                                     boxShadow: "lg",
                                 }}
-                                onClick={() => setStatus(!status)}
+                                onClick={() => {
+                                    localStorage.setItem("Value",price)
+                                    setStatus(!status)
+                                }}
                             >
                                 {status ? "Booked" : "Get"}
                             </Button>

@@ -9,54 +9,50 @@ import {
   Checkbox,
   Text,
 } from "@chakra-ui/react";
-//   import { SearchIcon } from "@chakra-ui/icons";
-// import styled from '@emotion/styled'
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
 const Sidebar = ({ page }) => {
   const [searchParma, setSearchParams] = useSearchParams();
   const [search, setSearch] = useState("");
-  // const [role, Setrole] = useState("");
-  const initLocation = searchParma.getAll("location");
+  const initLocation = searchParma.get("location");
 
   const [location, setLocation] = useState(initLocation || []);
 
-  const [sort, setSort] = useState("");
+  const [sortBy, setSortBy] = useState("");
+  const [sortOrder, setSortOrder] = useState("");
 
   useEffect(() => {
     const serchparams = {};
 
     search && (serchparams.search = search);
-    // role && (serchparams.role = role);
     location && (serchparams.location = location);
-    sort && (serchparams.sort = sort);
-    page && (serchparams.page = page);
+    sortBy && (serchparams.sortBy = sortBy);
+    sortOrder && (serchparams.sortOrder = "");
     setSearchParams(serchparams);
-  }, [search, location, sort, page]);
-
-  // const handrole = (e) => {
-  //     Setrole(e);
-  // };
+  }, [search, location, sortBy, page]);
 
   const handalCity = (e) => {
     const { value } = e.target;
 
-    let newcity = [...location];
+    // let newcity = [...location];
 
-    if (newcity.includes(value)) {
-      newcity = newcity.filter((el) => el !== value);
-    } else {
-      newcity.push(value);
-    }
-    setLocation(newcity);
+    // if (newcity.includes(value)) {
+    //   newcity = newcity.filter((el) => el !== value);
+    // } else {
+    //   newcity.push(value);
+    // }
+    setLocation(value);
   };
 
   const handalsort = (e) => {
-    setSort(e);
+    console.log(e);
+    setSortOrder(e);
+    console.log(sortOrder);
   };
+
   return (
-    <Box>
+    <Box height={'100vh'}>
       <Box
         style={{
           boxShadow:
@@ -74,28 +70,9 @@ const Sidebar = ({ page }) => {
       </Box>
 
       <Box style={{ marginTop: "25px", width: "85%", margin: "25px auto" }}>
-        {/* <Box
-                    style={{
-                        height: "15vh",
-                        padding: "10px",
-                        boxShadow:
-                            "rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,rgba(27, 31, 35, 0.15) 0px 0px 0px 1px",
-                    }}
-                >
-                    <RadioGroup colorScheme="purple" onChange={handrole} value={role}>
-                        <Stack direction="column">
-                            <Radio size='sm' value="">All</Radio>
-                            <Radio size='sm' value="Full-Time">Full-Time</Radio>
-                            <Radio size='sm' value="Part-Time">Part-Time</Radio>
-                        </Stack>
-                    </RadioGroup> 
-                </Box> */}
-
-        {/* ////////////////////////// */}
-
         <Box
           style={{
-            height: "44vh",
+            height: "auto",
             padding: "10px",
             boxShadow:
               "rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,rgba(27, 31, 35, 0.15) 0px 0px 0px 1px",
@@ -173,7 +150,7 @@ const Sidebar = ({ page }) => {
 
         <Box
           style={{
-            height: "20vh",
+            height: "auto",
             padding: "10px",
             boxShadow:
               "rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,rgba(27, 31, 35, 0.15) 0px 0px 0px 1px",
@@ -185,9 +162,9 @@ const Sidebar = ({ page }) => {
             fontSize={"md"}
             color={"purple.700"}
           >
-            Sort By Rating
+            Sort By Price
           </Text>
-          <RadioGroup colorScheme="purple" onChange={handalsort} value={sort}>
+          <RadioGroup colorScheme="purple" onChange={handalsort} value={sortOrder}>
             <Stack direction="column">
               <Radio size="sm" value="">
                 All

@@ -4,18 +4,18 @@ import {
   legacy_createStore
 } from "redux";
 import thunk from "redux-thunk";
-// import { reducer as shelterReducer } from "./shelterReducer/reducer";
+import { reducer as shelterReducer } from "./shelterReducer/reducer";
 import {reducer as adminUserReducer} from "./adminUserReducer/reducer"
 import {reducer as adminPetsReducer} from "./adminPetsReducer/reducer"
 import {reducer as loginUserReducer} from "./loginReducer/reducer"
 
-// import { reducer as shelterReducer } from "./hireReducer/reducer";
 // import AdminReducer from "./admin/admin.reducer"
 
 const rootReducer = combineReducers({
   adminUserReducer,
   adminPetsReducer,
-  loginUserReducer
+  loginUserReducer,
+  shelterReducer
 });
 
 export const store = legacy_createStore(

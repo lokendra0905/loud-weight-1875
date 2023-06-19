@@ -19,6 +19,7 @@ export const MainRoutes = () => {
             <Route path='/profile' element={<Profile />}/>
             <Route path='/admindashboard' element={<AdminDashboard />}/>
             <Route path='/adminpetsandadoption' element={<AdminPetsAndAdoption />}/>
+            <Route path='/adminpetsandadoption' element={<AdminPetsAndAdoption />}/>
         </Routes>
     )
 }

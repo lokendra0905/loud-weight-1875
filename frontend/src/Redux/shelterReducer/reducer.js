@@ -1,4 +1,4 @@
-import { GET_TEACHER_FAILURE, GET_TEACHER_REQUEST, GET_TEACHER_SUCCESS, POST_HEIRE_STATUS } from "./actionType"
+import { GET_SHELTER_FAILURE, GET_SHELTER_REQUEST, GET_SHELTER_SUCCESS } from "./actionType"
 
 
 
@@ -12,27 +12,16 @@ export const reducer = (state = initState, { type, payload }) => {
 
   switch (type) {
 
-    case GET_TEACHER_REQUEST: {
+    case GET_SHELTER_REQUEST: {
       return { ...state, isLoading: true }
     }
-    case GET_TEACHER_SUCCESS: {
+    case GET_SHELTER_SUCCESS: {
       return { ...state, shelterData: payload, isLoading: false }
     }
-    case GET_TEACHER_FAILURE: {
+    case GET_SHELTER_FAILURE: {
       return { ...state, isError: true, isLoading: false }
     }
-    case POST_HEIRE_STATUS: {
-      let update = state.shelterData.map((el) => {
-        if (el.id === payload) {
-          return { ...el, status: !el.status }
-        }
-        else {
-          return el
-        }
-      })
-
-      return { ...state, shelterData: update }
-    }
+    
     default: {
       return state
     }
