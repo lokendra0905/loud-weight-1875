@@ -4,24 +4,30 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllPets } from "../../Redux/adminPetsReducer/action";
 import { AdminPetsCard } from "./AdminPetsCard";
+import { useSearchParams } from "react-router-dom";
 
 export const AdminPetsAndAdoption = () => {
   const AllPetsList = useSelector((store) => store.adminPetsReducer.petsList);
+  let refreshThePage = useSelector((store)=>store.adminPetsReducer.refresh)
+  
   const [refresh, setRefresh] = useState(false)
-
+  const shouldRenderAccordion = true;
   const dispatch = useDispatch();
+
+  
   const handleRefresh = ()=>{
     setRefresh(!refresh)
   }
   useEffect(() => {
     dispatch(getAllPets);
-  }, [refresh]);
+  }, [refresh,refreshThePage]);
+  console.log(AllPetsList);
 
   return (
     <Box>
       <Flex>
-        <AdminSideBar />
-        <Box flex={1} >
+        <AdminSideBar shouldRenderAccordion={shouldRenderAccordion}/>
+        <Box flex={1} mt={50}>
           <Grid templateColumns={{ base: 'repeat(1, 1fr)', md: 'repeat(2, 1fr)', lg: 'repeat(4, 1fr)' }} gap={6}>
             {
                 AllPetsList?.map((pets)=>(

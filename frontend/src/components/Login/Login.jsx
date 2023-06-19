@@ -10,6 +10,7 @@ import {
   Input,
   Text,
   VStack,
+  useToast,
 } from "@chakra-ui/react";
 import axios from "axios";
 import React, { useState } from "react";
@@ -18,6 +19,7 @@ import { FcGoogle } from "react-icons/fc";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import { userDetails } from "../../Redux/loginReducer/action";
+import { LOGIN_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS } from "../../Redux/loginReducer/actionTypes";
 
 
 export const Login = () => {
@@ -25,20 +27,48 @@ export const Login = () => {
   const [password,setPassword] = useState("")
   const navigate = useNavigate()
   const dispatch = useDispatch()
+  const toast = useToast()
   const handleLogin = ()=>{
     const loginData = {
       email,
-      pass:password
+      password
     }
+      dispatch({type:LOGIN_REQUEST})
+      axios.post(`https://real-pink-donkey-coat.cyclic.app/users/login`,loginData).then((res)=>{
+      dispatch({type:LOGIN_SUCCESS,payload:res.data.role})
+      toast({
+        position: "top",
+        title: `${res.data.message}`,
+        status: "success",
+        duration: 1000,
+        isClosable: true,
+      });
 
-      dispatch(userDetails(loginData))
+      localStorage.setItem("token",res.data.token)
+      localStorage.setItem("refreshtoken",res.data.refreshToken)
+
       if (email.includes("@petconnects.com")) {
         navigate("/admindashboard");
       } else {
         navigate("/");
       }
-    // setEmail("")
-    // setPassword("")
+      console.log(res.data);
+  })
+  .catch((err)=>{
+    toast({
+      position: "top",
+      title: `${err.response.data.message}`,
+      status: "error",
+      duration: 4000,
+      isClosable: true,
+    });
+      console.log(err);
+      dispatch({type:LOGIN_FAILURE})
+  
+  })
+  
+    setEmail("")
+    setPassword("")
   }
 
   return (
