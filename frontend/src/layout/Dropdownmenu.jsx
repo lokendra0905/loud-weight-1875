@@ -2,7 +2,7 @@ import React from "react";
 import { Box, ListItem, UnorderedList, useDisclosure } from "@chakra-ui/react";
 import { Link, NavLink } from "react-router-dom";
 
-const Dropdown = ({ texts, title, navlink, we, he }) => {
+export const Dropdown = ({ texts, title, navlink, we, he }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
@@ -43,5 +43,3 @@ const Dropdown = ({ texts, title, navlink, we, he }) => {
     </Box>
   );
 };
-
-export default Dropdown;
