@@ -2,7 +2,7 @@ import React from "react";
 import { Box, ListItem, UnorderedList, useDisclosure } from "@chakra-ui/react";
 import { Link, NavLink } from "react-router-dom";
 
-const Dropdown = ({ texts, title, navlink, we, he }) => {
+export const Dropdown = ({ texts, title, navlink, we, he }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
@@ -32,6 +32,7 @@ const Dropdown = ({ texts, title, navlink, we, he }) => {
         borderRadius={"0px 0px 10px 10px"}
         top={"100%"}
         overflow={"hidden"}
+        zIndex={"1000"}
       >
         {texts.map((e, i) => (
           <ListItem mt={"10px"} key={i}>
@@ -42,5 +43,3 @@ const Dropdown = ({ texts, title, navlink, we, he }) => {
     </Box>
   );
 };
-
-export default Dropdown;

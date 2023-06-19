@@ -3,11 +3,10 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { AiTwotoneHeart } from "react-icons/ai";
 import { GiHamburgerMenu } from "react-icons/gi";
-import Dropdown from "./Dropdownmenu";
-import TexthoverEfect from "./TexthoverEfect";
+import { Dropdown } from "./Dropdownmenu";
 import { Sidebar } from "./Sidebar";
 
-const Navbar = () => {
+export const Navbar = () => {
   const [statue, Setstatus] = useState(false);
   const handleTogleSidebar = () => {
     Setstatus(!statue);
@@ -38,15 +37,10 @@ const Navbar = () => {
                 w={"100%"}
               />
             </Box>
-            <Box>
-              <Link>
-                <TexthoverEfect
-                  text={"ALL ABOUT PETS"}
-                  fontsize={15}
-                  Scolor={"blue"}
-                  Ecolor={"red"}
-                />{" "}
-              </Link>
+            <Box ml={10}>
+              <Text fontWeight={"700"} fontSize={"20"} color={"#6504b5"}>
+                All About Pets
+              </Text>
             </Box>
           </Box>
 
@@ -72,7 +66,7 @@ const Navbar = () => {
                 display={"flex"}
                 alignItems={"center"}
                 justifyContent={"center"}
-                _hover={{ color: "green" }}
+                _hover={{ color: "#6504b5" }}
               >
                 <AiTwotoneHeart />
               </Box>
@@ -216,5 +210,3 @@ const Navbar = () => {
     </>
   );
 };
-
-export default Navbar;

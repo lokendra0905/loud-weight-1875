@@ -11,7 +11,6 @@ export const AdminRoutes = () => {
             <Route path='/register' element={<Register />} />
             <Route path='/login' element={<Login />} />
             <Route path='/profile' element={<Profile />}/>
-            <Route path='/admindashboard' element={<AdminDashboard />}/>           
             <Route path='/admindashboard' element={<AdminDashboard />}/>
             <Route path='/adminpetsandadoption' element={<AdminPetsAndAdoption />}/>
         </Routes>

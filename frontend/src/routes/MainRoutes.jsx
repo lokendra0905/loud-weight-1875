@@ -8,6 +8,7 @@ import { Profile } from '../components/Register/Profile'
 import { AdminDashboard } from '../components/AdminDashboard/AdminDashboard'
 import DetailsPage from '../components/AdoptionPage/DetailsPage'
 import DogsAdoption from '../components/AdoptionPage/DogsAdoption'
+import { AdminPetsAndAdoption } from '../components/AdminPetsAndAdoption/AdminPetsAndAdoption'
 
 export const MainRoutes = () => { 
     return (
@@ -20,7 +21,10 @@ export const MainRoutes = () => {
             <Route path='/profile' element={<Profile />}/>
             <Route path='/admindashboard' element={<AdminDashboard />}/>
             <Route path='/dogAdoptionPage' element={<DogsAdoption />}/>
+
             <Route path='/DetailsPage/:petId' element={<DetailsPage />}/>
+            <Route path='/adminpetsandadoption' element={<AdminPetsAndAdoption />}/>
+
         </Routes>
     )
 }

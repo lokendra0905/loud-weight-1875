@@ -8,7 +8,8 @@ import {
   Text,
   Th,
   Thead,
-  Tr
+  Tr,
+  useMediaQuery
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -19,14 +20,14 @@ import { AdminSideBar } from "./AdminSideBar";
 export const AdminDashboard = () => {
   const dispatch = useDispatch();
   const UsersList = useSelector((store) => store.adminUserReducer.allUsers);
-  const [changeRole, setChangeRole] = useState(false)
- 
-  const handleChangeRole = ()=>{
-    setChangeRole(!changeRole)
+  const [refresh, setRefresh] = useState(false)
+  const [isTableSmall] = useMediaQuery("(max-width: 500px)")
+  const handleRefresh = ()=>{
+    setRefresh(!refresh)
   }
   useEffect(() => {
     dispatch(getAllUsers);
-  }, [changeRole]);
+  }, [refresh]);
   console.log("...data", UsersList);
 
   return (
@@ -37,8 +38,8 @@ export const AdminDashboard = () => {
           {" "}
           {/* Add flex="1" to make it take up remaining space */}
           <Grid
-            templateColumns={"repeat(4, 1fr)"}
-           
+            // templateColumns={"repeat(4, 1fr)"}
+            templateColumns={{ base: 'repeat(2, 1fr)', md: 'repeat(2, 1fr)', lg: 'repeat(4, 1fr)' }}
             gap={10}
             textAlign={"left"}
             
@@ -92,7 +93,7 @@ export const AdminDashboard = () => {
               </Thead>
               {UsersList && UsersList.length > 0 &&
                 UsersList.map((item) => (
-                  <AdminUserCard key={item._id} {...item} handleChangeRole={handleChangeRole}/>
+                  <AdminUserCard key={item._id} {...item} handleRefresh={handleRefresh}/>
                 ))}
             </Table>
           </Box>

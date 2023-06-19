@@ -1,4 +1,4 @@
-import { Box,  Image,  List,  ListItem,  UnorderedList } from "@chakra-ui/react";
+import { Box, Image, List, ListItem, UnorderedList } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { AiTwotoneHeart } from "react-icons/ai";
 import { GiCrossedBones } from "react-icons/gi";
@@ -14,8 +14,8 @@ export const Sidebar = ({ hv, handleTogleSidebar }) => {
       width={"100%"}
       h={"100vh"}
       position={"fixed"}
-      bg="transparent"
-      backdropFilter="blur(8px)"
+      bg="#6504b5"
+      backdropFilter="blur(100px)"
       top={0}
       left={0}
       zIndex="8000"
@@ -59,15 +59,30 @@ export const Sidebar = ({ hv, handleTogleSidebar }) => {
           </Box>{" "}
         </Box>
       </Box>
-      
-   <UnorderedList listStyleType={"none"}  mt={"40px"} spacing={"30px"} fontSize={"md"} fontWeight={"bold"} ml={"20px"}color={"#6504b5"} fontFamily={"sans-serif"} >
-    <ListItem><Link> ADOPT OR GET INVOLVED</Link></ListItem>
-    <ListItem><Link> DOGS & PUPPIES</Link></ListItem>
-    <ListItem><Link> CATS & KITTENS</Link></ListItem>
-    <ListItem><Link> OTHER TYPES OF PETS</Link></ListItem>
-   
-   </UnorderedList>
 
+      <UnorderedList
+        listStyleType={"none"}
+        mt={"40px"}
+        spacing={"30px"}
+        fontSize={"md"}
+        fontWeight={"bold"}
+        ml={"20px"}
+        color={"#FFFF"}
+        fontFamily={"sans-serif"}
+      >
+        <ListItem>
+          <Link> ADOPT OR GET INVOLVED</Link>
+        </ListItem>
+        <ListItem>
+          <Link> DOGS & PUPPIES</Link>
+        </ListItem>
+        <ListItem>
+          <Link> CATS & KITTENS</Link>
+        </ListItem>
+        <ListItem>
+          <Link> OTHER TYPES OF PETS</Link>
+        </ListItem>
+      </UnorderedList>
     </Box>
   );
 };
