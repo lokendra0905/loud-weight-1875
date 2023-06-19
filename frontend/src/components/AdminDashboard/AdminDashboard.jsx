@@ -57,7 +57,7 @@ export const AdminDashboard = () => {
                 Total Users
               </Text>
               <Text fontSize={30} fontWeight={500}>
-                234
+                {UsersList && UsersList.length }
               </Text>
             </GridItem>
             <GridItem rounded={5} p={4} bg="#dbdbf5" boxShadow= "rgba(0, 0, 0, 0.16) 0px 1px 4px">
