@@ -3,12 +3,11 @@ import React from "react";
 import { FaFacebookF } from "react-icons/fa";
 import { BsInstagram, BsTwitter } from "react-icons/bs";
 import { ImYoutube } from "react-icons/im";
-import PhonefooterList from "./PhonefooterList";
-// import {BiLogoPinterestAlt} from 'react-icons/bi'
+import { PhonefooterList } from "./PhonefooterList";
 
 export const Footer = () => {
   return (
-    <>
+    <Box pos={"static"}>
       <Box w={"100%"} display={{ base: "none", lg: "block" }}>
         <Box
           bg={"#6504b5"}
@@ -17,16 +16,16 @@ export const Footer = () => {
           flexDirection={"column"}
           alignItems={"center"}
           justifyContent={"center"}
-          pt={"50px"}
+          p={"10"}
         >
           <Box w={"95%"}>
             <Box
-              bg={"transparent"}
+              // bg={"transparent"}
               color={"white"}
               fontSize={"2xl"}
               ml={"10px"}
             >
-              <Text fontFamily="Lucida Handwriting">Pet Connect</Text>
+              <Text fontFamily="Lucida Handwriting">PetConnects</Text>
             </Box>
 
             <Box w={"100%"} display={"flex"} mt={"30px"} gap={8}>
@@ -43,7 +42,7 @@ export const Footer = () => {
                 <ListItem>Mobille App Download</ListItem>
                 <ListItem>Partnerships</ListItem>
                 <ListItem>News Center</ListItem>
-                <ListItem>Put Petfinder On Your Site</ListItem>
+                <ListItem>Put PetConnects On Your Site</ListItem>
                 <ListItem>For Developers</ListItem>
                 <ListItem>Contact Us</ListItem>
               </UnorderedList>
@@ -114,7 +113,7 @@ export const Footer = () => {
               >
                 <Text color={"#6504b5"}>
                   To get the lastest on pet adoption and pet care, sign up for
-                  the Petfinder newsletter.
+                  the PetConnects newsletter.
                 </Text>
 
                 <Box
@@ -160,7 +159,7 @@ export const Footer = () => {
             color={"white"}
           >
             <Text ml={"45px"} fontSize={"sm"}>
-              ©2023 Petfinder.com All trademarks are owned by Société des
+              ©2023 PetConnects.com All trademarks are owned by Société des
               Produits Nestlé S.A., or used with permission.{" "}
             </Text>
 
@@ -197,7 +196,7 @@ export const Footer = () => {
             fontSize={"2xl"}
             fontFamily="Lucida Handwriting"
           >
-            Pet Connect
+            PetConnects
           </Text>
 
           <Box
@@ -214,7 +213,7 @@ export const Footer = () => {
           >
             <Text color={"#6504b5"}>
               To get the lastest on pet adoption and pet care, sign up for the
-              Petfinder newsletter.
+              PetConnects newsletter.
             </Text>
 
             <Box
@@ -241,7 +240,7 @@ export const Footer = () => {
               { name: "Mobile App Download" },
               { name: "Partnerships" },
               { name: "News Center" },
-              { name: "Put Petfinder On Your Site" },
+              { name: "Put PetConnects On Your Site" },
               { name: "For Developers" },
               { name: "Contact Us" },
             ]}
@@ -255,7 +254,7 @@ export const Footer = () => {
               { name: "Mobile App Download" },
               { name: "Partnerships" },
               { name: "News Center" },
-              { name: "Put Petfinder On Your Site" },
+              { name: "Put PetConnects On Your Site" },
               { name: "For Developers" },
               { name: "Contact Us" },
             ]}
@@ -269,7 +268,7 @@ export const Footer = () => {
               { name: "Mobile App Download" },
               { name: "Partnerships" },
               { name: "News Center" },
-              { name: "Put Petfinder On Your Site" },
+              { name: "Put PetConnects On Your Site" },
               { name: "For Developers" },
               { name: "Contact Us" },
             ]}
@@ -283,7 +282,7 @@ export const Footer = () => {
               { name: "Mobile App Download" },
               { name: "Partnerships" },
               { name: "News Center" },
-              { name: "Put Petfinder On Your Site" },
+              { name: "Put PetConnects On Your Site" },
               { name: "For Developers" },
               { name: "Contact Us" },
             ]}
@@ -324,11 +323,11 @@ export const Footer = () => {
             fontSize={"sm"}
             textAlign={"center"}
           >
-            ©2023 Petfinder.com All trademarks are owned by Société des Produits
-            Nestlé S.A., or used with permission.{" "}
+            ©2023 PetConnects.com All trademarks are owned by Société des
+            Produits Nestlé S.A., or used with permission.
           </Text>
         </Box>
       </Box>
-    </>
+    </Box>
   );
 };

@@ -1,5 +1,10 @@
 .App {
   text-align: center;
+  /* font-family:Arial, Helvetica, sans-serif */
+}
+
+* {
+  font-family: "Nexa-Regular", Helvetica, Arial, sans-serif;
 }
 
 .App-logo {
