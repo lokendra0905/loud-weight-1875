@@ -13,6 +13,8 @@ import {
 } from "@chakra-ui/react";
 import { useNavigate, useParams } from "react-router-dom";
 
+let Price = localStorage.getItem("Value");
+console.log(Price);
 const PaymentsPage = () => {
   const navigate = useNavigate();
   const { amount } = useParams();
@@ -28,6 +30,7 @@ const PaymentsPage = () => {
       width={"50%"}
       p={8}
     >
+
       <Heading mb={4} textAlign={"center"}>
         Payment Information
       </Heading>

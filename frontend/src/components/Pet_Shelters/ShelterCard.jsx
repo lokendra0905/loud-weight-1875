@@ -9,11 +9,11 @@ import {
   Stack,
   Text,
   useColorModeValue,
+  
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
-
-import Data from "../db.json";
-import { BsStar, BsStarFill, BsStarHalf } from "react-icons/bs";
+import { BsStar, BsStarFill, BsStarHalf } from 'react-icons/bs';
+import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
 
 var numReviews = 100;
@@ -48,6 +48,8 @@ function Rating({ rating }) {
 
 const ShelterCard = ({ name, image, rating, location, price }) => {
   const [status, setStatus] = useState(false);
+
+    const navigate=useNavigate()
 
   return (
     <Box>
@@ -91,7 +93,6 @@ const ShelterCard = ({ name, image, rating, location, price }) => {
                   {name}
                 </Heading>
               </Stack>
-
               <Stack direction={"column"} justify={"center"} spacing={6}>
                 <Stack spacing={0} align={"center"}>
                   {/* <Text fontWeight={"400"} textColor={"b"} color={"gray.500"}>
