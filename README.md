@@ -3,7 +3,11 @@
 <h3>About the Project</h3>
 <div class="about-section">
     <h2>Welcome to Our Pet Shelter and Adoption Website</h2>
+    To see the live site click the link.
+  (https://petconnects.vercel.app/)
     <p>Discover the features of our full-stack project:</p>
+    To see the live site click the below link.
+    [See Live]()
     <ul>
         <li>Find Your Perfect Pet Match: We assist you in finding the best pet that suits your preferences and lifestyle.</li>
         <li>Temporary Pet Shelters: If you already have a pet and need a shelter for a certain period, we provide temporary accommodations.</li>
