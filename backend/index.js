@@ -21,6 +21,7 @@ app.use("/favourites", FavouiteRouter);
 app.listen(process.env.PORT, async (req, res) => {
   try {
     await connection;
+    console.log(`Server is running at PORT ${process.env.PORT}`);
     console.log("Connected to Database Successfully");
   } catch (error) {
     console.log("Cannot Connect to Datatbase");
