@@ -5,11 +5,10 @@ import {
   Image,
   FormControl,
   Input,
-  Center,
   Divider,
   Heading,
   Text,
-  Grid,
+  SimpleGrid,
 } from "@chakra-ui/react";
 import { CategoryCard } from "./CategoryCard";
 
@@ -18,22 +17,22 @@ export const Banner = () => {
     {
       title: "Dog",
       image: "assets/dogs.svg",
-      url:"/dogAdoptionPage"
+      url: "/dogAdoptionPage",
     },
     {
       title: "Cats",
       image: "assets/cats.svg",
-      url:"/dogAdoptionPage"
+      url: "/dogAdoptionPage",
     },
     {
       title: "Other Animals",
       image: "assets/other_animals.svg",
-      url:"/dogAdoptionPage"
+      url: "/dogAdoptionPage",
     },
     {
       title: "Shelters",
       image: "assets/shelters.svg",
-      url:"/shelters"
+      url: "/shelters",
     },
   ];
 
@@ -69,18 +68,14 @@ export const Banner = () => {
               placeholder="Search terria, kitten, etc"
               border={"none"}
             />
-            <Center height="50px" w={"2px"} color={""}>
-              <Divider orientation="vertical" />
-            </Center>
-
+            <Divider orientation="vertical" height="50px" />
             <Input
               pl={5}
               type="text"
               variant={"unstyled"}
               h={"100%"}
-              placeholder="Enter City ,State or Zip"
+              placeholder="Enter City, State or Zip"
             />
-
             <Box
               type="submit"
               w={"100px"}
@@ -115,24 +110,20 @@ export const Banner = () => {
             </Text>
           </Box>
         </Box>
-        <Grid
+        <SimpleGrid
+          columns={{ base: 1, md: 4 }}
+          gap={5}
           bottom={"-28"}
           left={"10%"}
           right={"10%"}
           position={{ base: "none", md: "absolute" }}
-          gridTemplateColumns={{
-            lg: "repeat(4,1fr)",
-            md: "repeat(4,1fr)",
-            base: "repeat(2,1fr)",
-          }}
           w={{ lg: "70%", md: "80%", base: "90%" }}
-          gap={5}
           m={"auto"}
         >
-          {CARD_Items.map((item) => {
-            return <CategoryCard data={item} />;
-          })}
-        </Grid>
+          {CARD_Items.map((item) => (
+            <CategoryCard key={item.title} data={item} />
+          ))}
+        </SimpleGrid>
       </Box>
     </Box>
   );
