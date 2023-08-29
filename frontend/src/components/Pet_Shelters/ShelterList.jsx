@@ -38,18 +38,20 @@ const ShelterList = () => {
 
   const paramObj = {
     params: {
-      search: searchParams.get("search"),
-      location: searchParams.get("location"),
-      sortBy: searchParams.get("price"),
-      sortOrder: searchParams.get(""),
+      // search: searchParams.get("search"),
+      location: searchParams.getAll("location"),
+      sortBy : searchParams.get("price"),
+      order : searchParams.get("order")
+      // sortBy: searchParams.get("price"),
+      // sortOrder: searchParams.get(""),
     },
   };
-  // console.log(paramObj);
+  console.log(paramObj);
   console.log(data);
 
   useEffect(() => {
     dispatch(getShelterData(paramObj));
-  }, [location.key]);
+  }, [searchParams]);
 
   // console.log(data.data, "hiiii");
   var Data = data.data;

@@ -39,7 +39,7 @@ export const Login = () => {
     };
     dispatch({ type: LOGIN_REQUEST });
     axios
-      .post(`https://real-pink-donkey-coat.cyclic.app/users/login`, loginData)
+      .post(`https://petconnects-aml6.onrender.com/users/login`, loginData)
       .then((res) => {
         dispatch({ type: LOGIN_SUCCESS, payload: res.data.role });
         toast({
@@ -120,7 +120,7 @@ export const Login = () => {
           </FormControl>
         </VStack>
         <Center>
-          <Button bg="#673ab7" color="white" onClick={handleLogin}>
+          <Button bg="#673ab7" color="black" onClick={handleLogin}>
             Login
           </Button>
         </Center>
