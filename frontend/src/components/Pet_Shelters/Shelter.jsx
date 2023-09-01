@@ -16,9 +16,9 @@ export const Shelter = () => {
       <Box
         style={{
           display: "flex",
-          flexWrap: "wrap", // Allow items to wrap to the next line on smaller screens
-          gap: "10px", // Add some spacing between components
-          marginBottom: "10px", // Add space between components and pagination
+          flexWrap: "wrap", 
+          gap: "10px", 
+          marginBottom: "10px",
         }}
       >
         <Box
