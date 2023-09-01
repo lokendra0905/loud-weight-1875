@@ -25,8 +25,8 @@ export const Shelter = () => {
           style={{
             boxShadow:
               "rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px",
-            flex: "0 0 calc(15% - 10px)", 
-            marginBottom: "10px", 
+            flex: "0 0 calc(15% - 10px)", // Sidebar takes up 15% width with spacing
+            marginBottom: "10px", // Add space between sidebar and shelter list
           }}
         >
           <Sidebar page={page} />
@@ -36,8 +36,8 @@ export const Shelter = () => {
           style={{
             boxShadow:
               "rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px",
-            flex: "1", 
-            marginBottom: "10px",
+            flex: "1", // Shelter list takes up the remaining space
+            marginBottom: "10px", // Add space between shelter list and pagination
           }}
         >
           <ShelterList />
