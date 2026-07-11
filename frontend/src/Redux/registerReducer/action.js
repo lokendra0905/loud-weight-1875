@@ -5,7 +5,7 @@ import { REGISTER_FAILURE, REGISTER_REQUEST, REGISTER_SUCCESS } from "./actionTy
 
 export const registerUser=(regData)=>(dispatch)=>{
     dispatch({type:REGISTER_REQUEST})
-    axios.post(`https://real-pink-donkey-coat.cyclic.app/users/register`,regData).then((res)=>{
+    axios.post(`https://petconnects-aml6.onrender.com/users/register`,regData).then((res)=>{
     dispatch({type:REGISTER_SUCCESS})
     console.log(res);
 })

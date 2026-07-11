@@ -6,32 +6,29 @@ ShelterRouter.get("/", async (req, res) => {
   try {
     const { type, sortBy, sortOrder, location, page, limit, search } =
       req.query;
-    const Shelters = await ShelterModel.find({});
+    let query = {}; // Create an empty query object for database filtering
 
-    let filteredData = Shelters;
-
-    //  Filtering the Data
-
+    // Building the query object for filtering
     if (type) {
-      filteredData = filteredData.filter(
-        (pet) => pet.type.toLowerCase() === type.toLowerCase()
-      );
+      query.type = type.toLowerCase();
     }
     if (location) {
-      filteredData = filteredData.filter(
-        (pet) => pet.location.toLowerCase() === location.toLowerCase()
-      );
+      query.location = location;
     }
-    //  Sorting the Data
+
+    const Shelters = await ShelterModel.find(query);
+
+    // Sorting the Data
     if (sortBy) {
       const order = sortOrder === "desc" ? -1 : 1;
-      filteredData.sort((a, b) => (a[sortBy] > b[sortBy] ? order : -order));
+      Shelters.sort((a, b) => (a[sortBy] > b[sortBy] ? order : -order));
     }
+
     // Searching Data
     if (search) {
       const searchQuery = search.toLowerCase();
 
-      filteredData = filteredData.filter(
+      Shelters = Shelters.filter(
         (pet) =>
           pet.name.toLowerCase().includes(searchQuery) ||
           pet.type.toLowerCase().includes(searchQuery) ||
@@ -41,21 +38,20 @@ ShelterRouter.get("/", async (req, res) => {
     }
 
     // Paginating data
-
     const currentPage = parseInt(page) || 1;
     const limitPerPage = parseInt(limit) || 10;
     const startIndex = (currentPage - 1) * limitPerPage;
     const endIndex = currentPage * limitPerPage;
-    const paginatedData = filteredData.slice(startIndex, endIndex);
+    const paginatedData = Shelters.slice(startIndex, endIndex);
 
-    res.status(200).send({
+    res.status(200).json({
       data: paginatedData,
-      totalData: filteredData.length,
-      totalPages: Math.ceil(filteredData.length / limitPerPage),
+      totalData: Shelters.length,
+      totalPages: Math.ceil(Shelters.length / limitPerPage),
       currentPage,
     });
   } catch (error) {
-    res.status(400).send({ error: error.message });
+    res.status(400).json({ error: error.message });
   }
 });
 

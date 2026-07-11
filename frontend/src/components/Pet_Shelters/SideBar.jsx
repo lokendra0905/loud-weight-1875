@@ -10,30 +10,46 @@ import {
   Text,
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
+import { PhoneIcon } from "react-icons/fa";
 import { useSearchParams } from "react-router-dom";
 
 const Sidebar = ({ page }) => {
   const [searchParma, setSearchParams] = useSearchParams();
   const [search, setSearch] = useState("");
-  const initLocation = searchParma.get("location");
-
+  const initLocation = searchParma.getAll("location");
+  let initialOrder = searchParma.get("order");
+  
   const [location, setLocation] = useState(initLocation || []);
 
-  const [sortBy, setSortBy] = useState("");
-  const [sortOrder, setSortOrder] = useState("");
+  const [order, setOrder] = useState(initialOrder || "");
+  const [sortBy, setSortBy] = useState("price");
+  
 
   useEffect(() => {
-    const serchparams = {};
+    const params = {
+      location,
+    };
 
-    search && (serchparams.search = search);
-    location && (serchparams.location = location);
-    sortBy && (serchparams.sortBy = sortBy);
-    sortOrder && (serchparams.sortOrder = "");
-    setSearchParams(serchparams);
-  }, [search, location, sortBy, page]);
+    order && (params.order = order);
+    sortBy && (params.sortBy = sortBy)
+
+    // search && (serchparams.search = search);
+    // location && (serchparams.location = location);
+    // sortBy && (serchparams.sortBy = sortBy);
+    // sortOrder && (serchparams.sortOrder = "");
+    setSearchParams(params);
+  }, [location, order,sortBy]);
 
   const handalCity = (e) => {
     const { value } = e.target;
+
+    let newLocation = [...location];
+    if (newLocation.includes(value)) {
+      newLocation = newLocation.filter((el) => el !== value);
+    } else {
+      newLocation.push(value);
+    }
+    setLocation(newLocation);
 
     // let newcity = [...location];
 
@@ -42,17 +58,20 @@ const Sidebar = ({ page }) => {
     // } else {
     //   newcity.push(value);
     // }
-    setLocation(value);
   };
 
   const handalsort = (e) => {
-    console.log(e);
-    setSortOrder(e);
-    console.log(sortOrder);
+    const { value } = e.target;
+    console.log(value, "value");
+    setOrder(value);
+
+    // console.log(e);
+    // setSortOrder(e);
+    console.log(order);
   };
 
   return (
-    <Box height={'100vh'}>
+    <Box height={"100vh"}>
       <Box
         style={{
           boxShadow:
@@ -93,7 +112,7 @@ const Sidebar = ({ page }) => {
               value={"Mumbai"}
               size="sm"
               colorScheme="purple"
-              defaultChecked={location.includes("Mumbai")}
+              checked={location.includes("Mumbai")}
             >
               Mumbai
             </Checkbox>
@@ -102,7 +121,7 @@ const Sidebar = ({ page }) => {
               value={"Pune"}
               size="sm"
               colorScheme="purple"
-              defaultChecked={location.includes("Pune")}
+              checked={location.includes("Pune")}
             >
               Pune
             </Checkbox>
@@ -111,7 +130,7 @@ const Sidebar = ({ page }) => {
               value={"Hyderabad"}
               size="sm"
               colorScheme="purple"
-              defaultChecked={location.includes("Hyderabad")}
+              checked={location.includes("Hyderabad")}
             >
               Hyderabad
             </Checkbox>
@@ -120,7 +139,7 @@ const Sidebar = ({ page }) => {
               value={"Bangalore"}
               size="sm"
               colorScheme="purple"
-              defaultChecked={location.includes("Bangalore")}
+              checked={location.includes("Bangalore")}
             >
               Bangalore
             </Checkbox>
@@ -129,7 +148,7 @@ const Sidebar = ({ page }) => {
               value={"Delhi"}
               size="sm"
               colorScheme="purple"
-              defaultChecked={location.includes("Delhi")}
+              checked={location.includes("Delhi")}
             >
               Delhi
             </Checkbox>
@@ -138,7 +157,7 @@ const Sidebar = ({ page }) => {
               value={"Lucknow"}
               size="sm"
               colorScheme="purple"
-              defaultChecked={location.includes("Lucknow")}
+              checked={location.includes("Lucknow")}
             >
               Lucknow
             </Checkbox>
@@ -164,19 +183,43 @@ const Sidebar = ({ page }) => {
           >
             Sort By Price
           </Text>
-          <RadioGroup colorScheme="purple" onChange={handalsort} value={sortOrder}>
+          {/* <RadioGroup
+            colorScheme="purple"
+            onChange={handalsort}
+          >
             <Stack direction="column">
-              <Radio size="sm" value="">
+              <Radio size="sm"  name = {"sortOrder"} value="">
                 All
               </Radio>
-              <Radio size="sm" value="asc">
+              <Radio size="sm" name = {"sortOrder"} value={"asc"}>
                 Ascending
               </Radio>
-              <Radio size="sm" value="desc">
+              <Radio size="sm"  name = {"sortOrder"} value={"desc"}>
                 Descending
               </Radio>
             </Stack>
-          </RadioGroup>
+          </RadioGroup> */}
+          <h3>Sort by Price</h3>
+          <div onChange={handalsort}>
+            <div>
+              <input
+                type="radio"
+                name="order"
+                value={"asc"}
+                defaultChecked={order === "asc"}
+              />
+              <label>Ascending</label>
+            </div>
+            <div>
+              <input
+                type="radio"
+                name="order"
+                value={"desc"}
+                defaultChecked={order === "desc"}
+              />
+              <label>Descending</label>
+            </div>
+          </div>
         </Box>
       </Box>
     </Box>

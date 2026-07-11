@@ -18,51 +18,56 @@ import { FcGoogle } from "react-icons/fc";
 import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { registerUser } from "../../Redux/registerReducer/action";
-import { REGISTER_FAILURE, REGISTER_REQUEST, REGISTER_SUCCESS } from "../../Redux/registerReducer/actionTypes";
+import {
+  REGISTER_FAILURE,
+  REGISTER_REQUEST,
+  REGISTER_SUCCESS,
+} from "../../Redux/registerReducer/actionTypes";
 import axios from "axios";
 export const Register = () => {
   const [email, setEmail] = useState("");
   const [fName, setFname] = useState("");
   const [LName, setLname] = useState("");
   const [password, setPass] = useState("");
-  const toast = useToast()
+  const toast = useToast();
 
   const dispatch = useDispatch();
   const handleRegister = () => {
     const regData = {
       email,
       password,
-      name:`${fName+" "+LName}`
-    }
-    dispatch({type:REGISTER_REQUEST})
-    axios.post(`https://real-pink-donkey-coat.cyclic.app/users/register`,regData).then((res)=>{
-    dispatch({type:REGISTER_SUCCESS})
-    toast({
-      position: "top",
-      title: `${res.data.message}`,
-      status: "success",
-      duration: 1000,
-      isClosable: true,
-    });
-    console.log(res);
-})
-.catch((err)=>{
-    console.log(err);
-    toast({
-      position: "top",
-      title: `${err.response.data.error}`,
-      status: "success",
-      duration: 1000,
-      isClosable: true,
-    });
-    dispatch({type:REGISTER_FAILURE})
-
-})
+      name: `${fName + " " + LName}`,
+    };
+    dispatch({ type: REGISTER_REQUEST });
+    axios
+      .post(`https://petconnects-aml6.onrender.com/users/register`, regData)
+      .then((res) => {
+        dispatch({ type: REGISTER_SUCCESS });
+        toast({
+          position: "top",
+          title: `${res.data.message}`,
+          status: "success",
+          duration: 1000,
+          isClosable: true,
+        });
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+        toast({
+          position: "top",
+          title: `${err.response.data.error}`,
+          status: "success",
+          duration: 1000,
+          isClosable: true,
+        });
+        dispatch({ type: REGISTER_FAILURE });
+      });
     // dispatch(registerUser(regData));
-    setEmail("")
-    setFname("")
-    setLname("")
-    setPass("")
+    setEmail("");
+    setFname("");
+    setLname("");
+    setPass("");
   };
 
   return (
@@ -74,7 +79,7 @@ export const Register = () => {
       alignItems="center"
     >
       <Box
-        w={{ base: '300px', md: '400px', lg: '600px' }}
+        w={{ base: "300px", md: "400px", lg: "600px" }}
         m="auto"
         p={50}
         rounded={10}
@@ -117,7 +122,13 @@ export const Register = () => {
             />
           </FormControl>
         </SimpleGrid>
-        <Button mt={10} bg="#673ab7" color="white" onClick={handleRegister}>
+        <Button
+          mt={10}
+          bg="#673ab7"
+          color="black"
+          variant={"solid"}
+          onClick={handleRegister}
+        >
           Signup
         </Button>
         <Text mt={5}>OR</Text>
